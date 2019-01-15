@@ -16,7 +16,7 @@ namespace dice {
 /// @param s  Seed for random-number generator.
 void init(unsigned s = 0);
 
-/// Roll a certain number of dice, each with the same number of factes.
+/// Roll a certain number of dice, each with the same number of facets.
 /// @param num_dice    Number of dice to roll.
 /// @param num_facets  Number of facets on each die.
 /// @return            Sum of values, each contributed from corresponding die.
