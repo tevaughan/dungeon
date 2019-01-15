@@ -28,7 +28,7 @@ struct roll_sequence: public vector<unsigned> {
   }
 };
 
-TEST_CASE("Seed can be repeated to repeat sequence.", "[dice]") {
+TEST_CASE("Seed must be repeated to repeat sequence.", "[dice]") {
   enum { N = 20, D = 3, F = 6 };
   roll_sequence const r1(N, D, F, 10);
   roll_sequence const r2(N, D, F, 10);
