@@ -4,10 +4,12 @@
 # @copyright  2019 Thomas E. Vaughan
 # @license    GPL3; see 'LICENSE' file.
 
-SRCS   := $(shell ls *.cpp)
-OBJS   := $(SRCS:.cpp=.o)
-CC     := $(CXX)
-DEPDIR := .d
+SRCS     := $(shell ls *.cpp)
+OBJS     := $(SRCS:.cpp=.o)
+CC       := $(CXX)
+CXXFLAGS := -Wall -O0 -g
+LDLIBS   := -lm
+DEPDIR   := .d
 
 tests : $(OBJS)
 

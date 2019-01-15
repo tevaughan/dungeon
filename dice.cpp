@@ -21,7 +21,7 @@ void init(unsigned s) {
 unsigned roll(unsigned num_dice, unsigned num_facets) {
   unsigned sum = 0;
   for (unsigned i = 0; i < num_dice; ++i) {
-    sum += rand() % num_facets;
+    sum += rand() % num_facets + 1;
   }
   return sum;
 }
