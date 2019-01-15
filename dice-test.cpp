@@ -71,7 +71,7 @@ struct hlim {
 
   /// Initialize values so that first call to update() is guaranteed to change
   /// both limits.
-  hlim() : min(N), max(0) {}
+  hlim(): min(N), max(0) {}
 
   /// Update min and max.
   ///
@@ -135,7 +135,7 @@ void draw_histogram(unsigned sz, hlim const &lim, vector<unsigned> const &h) {
 }
 
 TEST_CASE("Bell curve is produced for 3d6.", "[dice]") {
-  enum { F = 6, MAX = D * F, MIN = D, SZ = MAX - MIN + 1 };
+  enum { /* facets */ F = 6, MAX = D * F, MIN = D, SZ = MAX - MIN + 1 };
   vector<unsigned>    h(SZ, 0);
   roll_sequence const r(N, D, F);
   for (auto e : r) {
