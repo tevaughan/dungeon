@@ -142,7 +142,9 @@ TEST_CASE("Bell curve is produced for 3d6.", "[dice]") {
     ++h[e - D]; // Add element to histogram.
   }
   hlim limits;
-  for (unsigned i = 0; i < SZ / 2; ++i) {
+  // Adding one to SZ before dividing by two allows test to work for either
+  // even or odd SZ.
+  for (unsigned i = 0; i < (SZ + 1) / 2; ++i) {
     // Test symmetry of distribution.
     unsigned const j  = SZ - i - 1;
     double const   nl = h[i];
