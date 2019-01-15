@@ -55,7 +55,7 @@ double var(double nk, double n) { return nk * (1.0 - nk / n); }
 double stdev(double nk, double n) { return sqrt(var(nk, n)); }
 
 TEST_CASE("Bell curve is produced for 3d6.", "[dice]") {
-  enum { N = 100000, D = 3, F = 6, MAX = D * F, MIN = D, SZ = MAX - MIN + 1 };
+  enum { N = 1000, D = 3, F = 6, MAX = D * F, MIN = D, SZ = MAX - MIN + 1 };
   double constexpr NSD = 4.0;
   vector<unsigned>    h(SZ, 0);
   roll_sequence const r(N, D, F);
@@ -109,21 +109,15 @@ TEST_CASE("Bell curve is produced for 3d6.", "[dice]") {
     for (unsigned j = 0; j <= ih; ++j) {
       if (j == im) {
         printf("#");
-        continue;
-      }
-      if (j == il || j == ih) {
-        printf("|");
-        continue;
-      }
-      if (j > il && j < ih) {
-        printf("-");
-        continue;
-      }
-      if (j == iz) {
+      } else if (j == iz) {
         printf("z");
-        continue;
+      } else if (j == il || j == ih) {
+        printf("|");
+      } else if (j > il && j < ih) {
+        printf("-");
+      } else {
+        printf(" ");
       }
-      printf(" ");
     }
     printf("\n");
   }
