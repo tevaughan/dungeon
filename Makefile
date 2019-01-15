@@ -13,10 +13,15 @@ DEPDIR   := .d
 
 tests : $(OBJS)
 
+.PHONY : clean format
+
 clean :
 	@rm -fv $(OBJS)
 	@rm -fv tests
 	@rm -frv $(DEPDIR)
+
+format :
+	for i in *.hpp *.cpp; do clang-format -i $$i; done
 
 # The following was obtained from
 # 'http://make.mad-scientist.net/papers/advanced-auto-dependency-generation'.
