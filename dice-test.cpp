@@ -1,4 +1,3 @@
-
 /// @file       dice-test.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Test of functions in dungeon::dice.

@@ -1,4 +1,3 @@
-
 /// @file       tests.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Provide main() for catch.
@@ -7,4 +6,3 @@
 
 #define CATCH_CONFIG_MAIN ///< Tell catch to provide main-function.
 #include "catch.hpp"
-

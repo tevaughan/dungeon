@@ -1,7 +1,6 @@
-
 /// @file       dice.cpp
 /// @author     Thomas E. Vaughan
-/// @brief      Definition of dungeon::dice::roll.
+/// @brief      Definition of dungeon::dice::init and dungeon::dice::roll.
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
@@ -29,4 +28,3 @@ unsigned roll(unsigned num_dice, unsigned num_facets) {
 
 } // namespace dice
 } // namespace dungeon
-
