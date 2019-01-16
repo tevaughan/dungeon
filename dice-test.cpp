@@ -8,6 +8,7 @@
 #include "catch.hpp" // for TEST_CASE
 #include <cmath>     // for sqrt
 #include <cstdio>    // for printf
+#include <ctime>     // for time
 #include <vector>    // for vector
 
 using namespace dungeon;
@@ -20,24 +21,26 @@ struct roll_sequence: public vector<unsigned> {
   /// @param n  Number of rolls.
   /// @param d  Number of dice on each roll.
   /// @param f  Number of facets on each die.
-  /// @param s  Seed for random-number generation; by default use time().
-  roll_sequence(unsigned n, unsigned d, unsigned f, unsigned s = 0):
+  /// @param s  Reference to seed (changing state) for generator.
+  roll_sequence(unsigned n, unsigned d, unsigned f, unsigned &s):
       vector<unsigned>(n) {
-    dice::init(s);
     for (auto &e : *this) {
-      e = dice::roll(d, f);
+      e = dice::roll(d, f, s);
     }
   }
 };
 
 TEST_CASE("Seed must be repeated to repeat sequence.", "[dice]") {
   enum { N = 20, D = 3, F = 6 };
-  roll_sequence const r1(N, D, F, 10);
-  roll_sequence const r2(N, D, F, 10);
+  unsigned            s = 10;
+  roll_sequence const r1(N, D, F, s);
+  s = 10;
+  roll_sequence const r2(N, D, F, s);
   REQUIRE(r1 == r2);
-  roll_sequence const r3(N, D, F, 11);
+  roll_sequence const r3(N, D, F, s);
   REQUIRE(r1 != r3);
-  roll_sequence const r4(N, D, F);
+  s = time(nullptr);
+  roll_sequence const r4(N, D, F, s);
   REQUIRE(r1 != r4);
   REQUIRE(r3 != r4);
 }
@@ -137,8 +140,9 @@ void draw_histogram(unsigned sz, hlim const &lim, vector<unsigned> const &h) {
 TEST_CASE("Bell curve is produced for 3d6.", "[dice]") {
   enum { /* facets */ F = 6, MAX = D * F, MIN = D, SZ = MAX - MIN + 1 };
   vector<unsigned>    h(SZ, 0);
-  roll_sequence const r(N, D, F);
-  for (auto e : r) {
+  unsigned            s = time(nullptr);
+  roll_sequence const r(N, D, F, s);
+  for (auto &e : r) {
     ++h[e - D]; // Add element to histogram.
   }
   hlim limits;
