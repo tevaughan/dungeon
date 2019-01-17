@@ -1,17 +1,15 @@
-/// @file       dice.cpp
+/// @file       roll-dice.cpp
 /// @author     Thomas E. Vaughan
-/// @brief      Definition of dungeon::dice::roll.
+/// @brief      Definition of dungeon::roll_dice.
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "dice.hpp"
-#include <cstdio>  // for printf
+#include "roll-dice.hpp"
 #include <cstdlib> // for rand_r
 
 namespace dungeon {
-namespace dice {
 
-unsigned roll(unsigned num_dice, unsigned num_facets, unsigned &s) {
+unsigned roll_dice(unsigned num_dice, unsigned num_facets, unsigned &s) {
   unsigned sum = 0;
   for (unsigned i = 0; i < num_dice; ++i) {
     sum += rand_r(&s) % num_facets + 1;
@@ -19,5 +17,4 @@ unsigned roll(unsigned num_dice, unsigned num_facets, unsigned &s) {
   return sum;
 }
 
-} // namespace dice
 } // namespace dungeon

@@ -1,10 +1,10 @@
-/// @file       dice-test.cpp
+/// @file       roll-dice-test.cpp
 /// @author     Thomas E. Vaughan
-/// @brief      Test of functions in dungeon::dice.
+/// @brief      Tests of function dungeon::roll_dice.
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "dice.hpp"
+#include "roll-dice.hpp"
 #include "catch.hpp" // for TEST_CASE
 #include <cmath>     // for sqrt
 #include <cstdio>    // for printf
@@ -21,11 +21,11 @@ struct roll_sequence: public vector<unsigned> {
   /// @param n  Number of rolls.
   /// @param d  Number of dice on each roll.
   /// @param f  Number of facets on each die.
-  /// @param s  Reference to seed (changing state) for generator.
+  /// @param s  Reference to state of random-number generator.
   roll_sequence(unsigned n, unsigned d, unsigned f, unsigned &s):
       vector<unsigned>(n) {
     for (auto &e : *this) {
-      e = dice::roll(d, f, s);
+      e = roll_dice(d, f, s);
     }
   }
 };

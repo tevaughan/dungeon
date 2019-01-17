@@ -1,8 +1,15 @@
-# Prerequisites
-*.d
-
 # Unit tests
 tests
+
+# CMake stuff
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# Prerequisites (if using mad-scientist approach)
+*.d
 
 # Compiled Object files
 *.slo
