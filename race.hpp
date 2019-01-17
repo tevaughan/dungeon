@@ -48,7 +48,7 @@ protected:
 
 /// Features of dwarf race.
 struct dwarf: public race {
-  static ab const mod;
+  static ab const                mod;
   static std::array<ab, 2> const min;
   static std::array<ab, 2> const max;
   dwarf(sex_id s): race("dwarf", s, mod, min[s], max[s]) {}
@@ -56,7 +56,7 @@ struct dwarf: public race {
 
 /// Features of elf race.
 struct elf: public race {
-  static ab const mod;
+  static ab const                mod;
   static std::array<ab, 2> const min;
   static std::array<ab, 2> const max;
   elf(sex_id s): race("elf", s, mod, min[s], max[s]) {}
@@ -64,7 +64,7 @@ struct elf: public race {
 
 /// Features of gnome race.
 struct gnome: public race {
-  static ab const mod;
+  static ab const                mod;
   static std::array<ab, 2> const min;
   static std::array<ab, 2> const max;
   gnome(sex_id s): race("gnome", s, mod, min[s], max[s]) {}
@@ -72,7 +72,7 @@ struct gnome: public race {
 
 /// Features of half_elf race.
 struct half_elf: public race {
-  static ab const mod;
+  static ab const                mod;
   static std::array<ab, 2> const min;
   static std::array<ab, 2> const max;
   half_elf(sex_id s): race("half_elf", s, mod, min[s], max[s]) {}
@@ -80,7 +80,7 @@ struct half_elf: public race {
 
 /// Features of halfling race.
 struct halfling: public race {
-  static ab const mod;
+  static ab const                mod;
   static std::array<ab, 2> const min;
   static std::array<ab, 2> const max;
   halfling(sex_id s): race("halfling", s, mod, min[s], max[s]) {}
@@ -88,7 +88,7 @@ struct halfling: public race {
 
 /// Features of half_orc race.
 struct half_orc: public race {
-  static ab const mod;
+  static ab const                mod;
   static std::array<ab, 2> const min;
   static std::array<ab, 2> const max;
   half_orc(sex_id s): race("half_orc", s, mod, min[s], max[s]) {}
@@ -96,7 +96,7 @@ struct half_orc: public race {
 
 /// Features of human race.
 struct human: public race {
-  static ab const mod;
+  static ab const                mod;
   static std::array<ab, 2> const min;
   static std::array<ab, 2> const max;
   human(sex_id s): race("human", s, mod, min[s], max[s]) {}
