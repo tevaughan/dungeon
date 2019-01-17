@@ -30,5 +30,6 @@ TEST_CASE("Each of two or more abilities has value >= 15.", "[abilities]") {
     check(a[id::CN], b15);
     check(a[id::CH], b15);
     REQUIRE(b15 >= 2);
+    REQUIRE(a[id::ES] == 0);
   }
 }

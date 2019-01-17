@@ -14,11 +14,21 @@ initial::initial(unsigned &s) {
   int b15;
   do {
     b15 = 0;
-    for (unsigned i = 0; i < id::_size(); ++i) {
-      unsigned const r = roll_dice(3, 6, s);
-      set(id::_from_integral(i), r);
-      if (r >= 15) {
-        ++b15;
+    for (auto i : id::_values()) {
+      switch (i) {
+      case id::ST:
+      case id::IN:
+      case id::WS:
+      case id::DX:
+      case id::CN:
+      case id::CH: {
+        unsigned const r = roll_dice(3, 6, s);
+        set(i, r);
+        if (r >= 15) {
+          ++b15;
+        }
+      } break;
+      case id::ES: break;
       }
     }
   } while (b15 < 2);
