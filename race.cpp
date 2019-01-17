@@ -16,8 +16,12 @@ race::race(std::string n, sex_id s, ab mod, ab min, ab max):
     minima(min),
     maxima(max) {}
 
-using ab = race::ab;          ///< Short-hand.
-using mf = std::array<ab, 2>; ///< Short-hand.
+/// Allow easy setting of abilities.
+using ab = race::ab;
+
+/// Type used for setting both male- and female-values for either maximum or
+/// minimum abilities.
+using mf = std::array<ab, 2>;
 
 ab const dwarf::mod({0, 0, 0, 0, +1, -1, 0});
 ab const elf::mod({0, 0, 0, +1, -1, 0, 0});
