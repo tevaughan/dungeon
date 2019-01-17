@@ -16,8 +16,8 @@ race::race(std::string n, sex_id s, ab mod, ab min, ab max):
     minima(min),
     maxima(max) {}
 
-using ab = race::ab;
-using mf = std::array<ab, 2>;
+using ab = race::ab;          ///< Short-hand.
+using mf = std::array<ab, 2>; ///< Short-hand.
 
 ab const dwarf::mod({0, 0, 0, 0, +1, -1, 0});
 ab const elf::mod({0, 0, 0, +1, -1, 0, 0});

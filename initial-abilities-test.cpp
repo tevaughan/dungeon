@@ -18,6 +18,7 @@ void check(unsigned a, unsigned &b15) {
   }
 }
 
+/// Verify that at least two abilities have value at least 15.
 TEST_CASE("Each of two or more abilities has value >= 15.", "[abilities]") {
   unsigned s = time(nullptr);
   for (unsigned i = 0; i < 1000; ++i) {

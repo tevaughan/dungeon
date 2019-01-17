@@ -8,6 +8,10 @@ Makefile
 cmake_install.cmake
 compile_commands.json
 
+# Doxygen stuff
+html
+latex
+
 # Prerequisites (if using mad-scientist approach)
 *.d
 

@@ -4,6 +4,12 @@
 /// @brief      Definition of
 ///             dungeon::abilities::word_size,
 ///             dungeon::abilities::id,
+///             dungeon::abilities::st_features,
+///             dungeon::abilities::in_features,
+///             dungeon::abilities::ws_features,
+///             dungeon::abilities::dx_features,
+///             dungeon::abilities::cn_features,
+///             dungeon::abilities::ch_features,
 ///             dungeon::abilities::basic.
 ///
 /// @copyright  2019 Thomas E. Vaughan
@@ -89,6 +95,7 @@ struct ch_features {
 /// The parameters that define the basic abilities of a character in the game.
 class basic {
 protected:
+  /// Type of internal storage for basic abilities.
   using array = std::array<int8_t, word_size(id::_size())>;
 
   array a_; ///< Storage for abilities.

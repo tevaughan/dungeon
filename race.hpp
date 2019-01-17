@@ -13,7 +13,8 @@
 namespace dungeon {
 namespace race {
 
-enum sex_id { MALE, FEMALE }; ///< Identifier for sex.
+/// Identifier for sex.
+enum sex_id { MALE, FEMALE };
 
 /// Features of a race and sex of characters.
 class race {
@@ -48,57 +49,78 @@ protected:
 
 /// Features of dwarf race.
 struct dwarf: public race {
-  static ab const                mod;
-  static std::array<ab, 2> const min;
-  static std::array<ab, 2> const max;
+  static ab const                mod; ///< Modifiers to initial abilities.
+  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
+  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
+
+  /// Initialize instance.
+  /// @param s  Identifier of sex.
   dwarf(sex_id s): race("dwarf", s, mod, min[s], max[s]) {}
 };
 
 /// Features of elf race.
 struct elf: public race {
-  static ab const                mod;
-  static std::array<ab, 2> const min;
-  static std::array<ab, 2> const max;
+  static ab const                mod; ///< Modifiers to initial abilities.
+  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
+  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
+
+  /// Initialize instance.
+  /// @param s  Identifier of sex.
   elf(sex_id s): race("elf", s, mod, min[s], max[s]) {}
 };
 
 /// Features of gnome race.
 struct gnome: public race {
-  static ab const                mod;
-  static std::array<ab, 2> const min;
-  static std::array<ab, 2> const max;
+  static ab const                mod; ///< Modifiers to initial abilities.
+  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
+  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
+
+  /// Initialize instance.
+  /// @param s  Identifier of sex.
   gnome(sex_id s): race("gnome", s, mod, min[s], max[s]) {}
 };
 
 /// Features of half_elf race.
 struct half_elf: public race {
-  static ab const                mod;
-  static std::array<ab, 2> const min;
-  static std::array<ab, 2> const max;
+  static ab const                mod; ///< Modifiers to initial abilities.
+  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
+  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
+
+  /// Initialize instance.
+  /// @param s  Identifier of sex.
   half_elf(sex_id s): race("half_elf", s, mod, min[s], max[s]) {}
 };
 
 /// Features of halfling race.
 struct halfling: public race {
-  static ab const                mod;
-  static std::array<ab, 2> const min;
-  static std::array<ab, 2> const max;
+  static ab const                mod; ///< Modifiers to initial abilities.
+  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
+  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
+
+  /// Initialize instance.
+  /// @param s  Identifier of sex.
   halfling(sex_id s): race("halfling", s, mod, min[s], max[s]) {}
 };
 
 /// Features of half_orc race.
 struct half_orc: public race {
-  static ab const                mod;
-  static std::array<ab, 2> const min;
-  static std::array<ab, 2> const max;
+  static ab const                mod; ///< Modifiers to initial abilities.
+  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
+  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
+
+  /// Initialize instance.
+  /// @param s  Identifier of sex.
   half_orc(sex_id s): race("half_orc", s, mod, min[s], max[s]) {}
 };
 
 /// Features of human race.
 struct human: public race {
-  static ab const                mod;
-  static std::array<ab, 2> const min;
-  static std::array<ab, 2> const max;
+  static ab const                mod; ///< Modifiers to initial abilities.
+  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
+  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
+
+  /// Initialize instance.
+  /// @param s  Identifier of sex.
   human(sex_id s): race("human", s, mod, min[s], max[s]) {}
 };
 

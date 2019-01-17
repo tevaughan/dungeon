@@ -8,7 +8,6 @@
 #define DUNGEON_INITIAL_ABILITIES_HPP
 
 #include "basic-abilities.hpp" // for basic_abilities
-#include <cstdint>             // for uint8_t
 
 namespace dungeon {
 namespace abilities {
