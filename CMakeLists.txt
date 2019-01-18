@@ -6,4 +6,12 @@ aux_source_directory(. Dungeon_SRCS)
 include_directories(.)
 add_executable(tests ${Dungeon_SRCS})
 add_custom_target(format for i in *.cpp *.hpp\; do clang-format -i $$i\; done)
+add_custom_target(very-clean
+  for i in
+    CMakeFiles
+    Makefile
+    CMakeCache.txt
+    cmake_install.cmake
+    compile_commands.json
+    \; do rm -fr $$i\; done)
 set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES "html" "latex")
