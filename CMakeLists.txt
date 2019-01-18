@@ -18,11 +18,17 @@ add_custom_target(dox
    cd ${CMAKE_SOURCE_DIR}\;
    doxygen)
 
+find_program(SYMLINKS symlinks)
+if (NOT SYMLINKS)
+   message("symlinks program not found; symlinks will not be relativized.")
+   set (SYMLINKS "")
+endif ()
+
 # Generate link so that vim can find database in source directory.
 add_custom_target(ycm_db ALL
-   ln -fs
-   ${CMAKE_BINARY_DIR}/compile_commands.json
-   ${CMAKE_SOURCE_DIR}/compile_commands.json)
+   cd ${CMAKE_SOURCE_DIR}\;
+   ln -fs ${CMAKE_BINARY_DIR}/compile_commands.json\;
+   if test -x ${SYMLINKS}\; then ${SYMLINKS} -c .\; fi)
 
 # Make it so that html and latex directories are removed on clean.
 set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES

@@ -6,63 +6,44 @@
 
 #include "basic-abilities.hpp"
 #include <iostream> // for cerr, endl
+#include <map>      // for map
 
 namespace dungeon {
 namespace abilities {
 
-/// Find offset of record in table of features for ability.
-/// @tparam T  Type of table associating maximum ability-score with offset.
-/// @param  m  Table associating maximum ability-score with offset.
-/// @param  s  Ability-score whose offset is sought.
-/// @return    Offset corresponding to ability-score.
-template <typename T>
-unsigned find_offset(unsigned min, T const &m, unsigned s) {
-  if (s < min) {
-    std::cerr << "ERROR: score=" << s << " < " << min << std::endl;
-    throw "score too small";
-  }
-  // At the moment, linear search is used.  This could be optimized a bit.
-  for (unsigned i = 0; i < m.size(); ++i) {
-    if (m[i] >= s) {
-      return i;
-    }
-  }
-  std::cerr << "ERROR: score=" << s << std::endl;
-  throw "score too large";
-  return m.size() - 1;
-}
+// For looking up a record in each table below, map::lower_bound is used
+// because the key for each record is the maximum ability-score corresponding
+// to the record.  map::lower_bound finds the first element whose key is not
+// less than the relevant ability-score in the instance of basic.  If there be
+// no such element, then the ability-score in the instance is larger than the
+// largest tabulated score; so the last record in the table is returned.
 
-
+// Strength table.
 st_features const &basic::st() const {
-  enum : unsigned { NR = 15 }; // Number of records in table.
-
-  static std::array<unsigned, NR> const max_score(
-      {3000, 5000, 7000, 9000, 11000, 13000, 15000, 16000, 17000, 18000, 18050,
-       18075, 18090, 18099, 18100});
-
-  static std::array<st_features, NR> const table(
-      {st_features{-3, -1, /**/ -350, 1, 1, /***/ 0},
-       st_features{-2, -1, /**/ -250, 1, 1, /***/ 0},
-       st_features{-1, +0, /**/ -150, 1, 1, /***/ 0},
-       st_features{+0, +0, /*****/ 0, 2, 1, /***/ 1},
-       st_features{+0, +0, /*****/ 0, 2, 1, /***/ 2},
-       st_features{+0, +0, /***/ 100, 2, 1, /***/ 4},
-       st_features{+0, +0, /***/ 200, 2, 1, /***/ 7},
-       st_features{+0, +1, /***/ 350, 3, 1, /**/ 10},
-       st_features{+1, +1, /***/ 500, 3, 1, /**/ 13},
-       st_features{+1, +2, /***/ 750, 3, 1, /**/ 16},
-       st_features{+1, +3, /**/ 1000, 3, 1, /**/ 20},
-       st_features{+2, +3, /**/ 1250, 4, 1, /**/ 25},
-       st_features{+2, +4, /**/ 1500, 4, 1, /**/ 30},
-       st_features{+2, +5, /**/ 2000, 4, 1, /**/ 35},
-       st_features{+3, +6, /**/ 3000, 5, 2, /**/ 40}});
-
-  unsigned const score  = get(id::ST) * 1000 + get(id::ES);
-  unsigned const offset = find_offset(3000, max_score, score);
-  return table[offset];
+  static std::map<unsigned, st_features> const table{
+      {/***/ 3000, st_features{-3, -1, /**/ -350, 1, 1, /***/ 0}},
+      {/***/ 5000, st_features{-2, -1, /**/ -250, 1, 1, /***/ 0}},
+      {/***/ 7000, st_features{-1, +0, /**/ -150, 1, 1, /***/ 0}},
+      {/***/ 9000, st_features{+0, +0, /*****/ 0, 2, 1, /***/ 1}},
+      {/**/ 11000, st_features{+0, +0, /*****/ 0, 2, 1, /***/ 2}},
+      {/**/ 13000, st_features{+0, +0, /***/ 100, 2, 1, /***/ 4}},
+      {/**/ 15000, st_features{+0, +0, /***/ 200, 2, 1, /***/ 7}},
+      {/**/ 16000, st_features{+0, +1, /***/ 350, 3, 1, /**/ 10}},
+      {/**/ 17000, st_features{+1, +1, /***/ 500, 3, 1, /**/ 13}},
+      {/**/ 18000, st_features{+1, +2, /***/ 750, 3, 1, /**/ 16}},
+      {/**/ 18050, st_features{+1, +3, /**/ 1000, 3, 1, /**/ 20}},
+      {/**/ 18075, st_features{+2, +3, /**/ 1250, 4, 1, /**/ 25}},
+      {/**/ 18090, st_features{+2, +4, /**/ 1500, 4, 1, /**/ 30}},
+      {/**/ 18099, st_features{+2, +5, /**/ 2000, 4, 1, /**/ 35}},
+      {/**/ 18100, st_features{+3, +6, /**/ 3000, 5, 2, /**/ 40}}};
+  auto i = table.lower_bound(get(id::ST) * 1000 + get(id::ES));
+  if (i == table.end()) {
+    return table.rbegin()->second; // Use last record.
+  }
+  return i->second;
 }
 
-
+// Intelligence table.
 #if 0
 in_features const &basic::in() const {
   // TBS
