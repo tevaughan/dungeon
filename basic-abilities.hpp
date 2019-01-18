@@ -97,9 +97,9 @@ struct ch_features {
 class basic {
 protected:
   /// Type of internal storage for basic abilities.
-  using array = std::array<int8_t, word_size(id::_size())>;
+  using ar = std::array<int8_t, word_size(id::_size())>;
 
-  array a_; ///< Storage for abilities.
+  ar a_; ///< Storage for abilities.
 
   /// Set attributes to zero; disallow public construction.
   basic() { a_.fill(0); }
@@ -109,10 +109,14 @@ protected:
   /// @param v  New value for ability.
   void set(id i, int8_t v) { a_[i._to_integral()] = v; }
 
+  /// Copy of ability.
+  /// @param i  Identifier of ability to copy.
+  int get(id i) const { return a_[i._to_integral()]; }
+
 public:
   /// Copy of ability.
   /// @param i  Identifier of ability to copy.
-  int operator[](id i) const { return a_[i._to_integral()]; }
+  int operator[](id i) const { return get(i); }
 
   st_features const &st() const; ///< Features pertaining to strength-ability.
   in_features const &in() const; ///< Features pertaining to intel.-ability.

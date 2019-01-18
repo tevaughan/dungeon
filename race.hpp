@@ -21,7 +21,7 @@ class race {
 public:
   /// Allow easy setting of abilities.
   struct ab: public abilities::basic {
-    ab(array a) { a_ = a; } ///< Copy abilities from array.
+    ab(ar a) { a_ = a; } ///< Copy abilities from array.
   };
 
   std::string const name;      ///< Name of race.
