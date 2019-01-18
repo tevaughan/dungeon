@@ -18,6 +18,7 @@ add_custom_target(dox
    cd ${CMAKE_SOURCE_DIR}\;
    doxygen)
 
+# Generate link so that vim can find database in source directory.
 add_custom_target(ycm_db ALL
    ln -fs
    ${CMAKE_BINARY_DIR}/compile_commands.json
