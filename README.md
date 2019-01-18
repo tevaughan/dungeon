@@ -28,3 +28,9 @@ buy and sell equipment.  Finally, it will allow entry into a multi-level maze.
 A separate executable will allow for the random generation and editing of
 mazes.
 
+## License
+
+Dungeon is coyrighted by Thomas E. Vaughan and distributed under the terms of
+the GPL, version 3 or later, except for the file 'enum.h', which is copyrighted
+by Anton Bachin and distributed under the terms of the BSD two-clause (FreeBSD)
+license.  See 'LICENSE' and 'enum.h', respectively, for details.
