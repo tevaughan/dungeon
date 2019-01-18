@@ -1,128 +1,40 @@
 /// @file       race.hpp
 /// @author     Thomas E. Vaughan
-/// @brief      Declaration of dungeon::race.
+///
+/// @brief      Definition of
+///             dungeon::race::species_id,
+///             dungeon::race::sex_id;
+///             declaration of
+///             dungeon::race::modify.
+///
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
 #ifndef DUNGEON_RACE_HPP
 #define DUNGEON_RACE_HPP
 
+#include "enum.h"                // for BETTER_ENUM
 #include "initial-abilities.hpp" // for initial_abilities
-#include <string>                // for string
 
 namespace dungeon {
 namespace race {
 
+/// Identifier for species.
+BETTER_ENUM(species, unsigned, //
+            DWARF, ELF, GNOME, HALF_ELF, HALFLING, HALF_ORC, HUMAN);
+
 /// Identifier for sex.
-enum sex_id { MALE, FEMALE };
+BETTER_ENUM(sex, unsigned, MALE, FEMALE);
 
-/// Features of a race and sex of characters.
-class race {
-public:
-  /// Allow easy setting of abilities.
-  struct ab: public abilities::basic {
-    ab(ar a) { a_ = a; } ///< Copy abilities from array.
-  };
-
-  std::string const name;      ///< Name of race.
-  sex_id            sex;       ///< Identifier for sex.
-  ab const          modifiers; ///< Modifiers to initial abilities.
-  ab const          minima;    ///< Minimum abilities.
-  ab const          maxima;    ///< Maximum abilities.
-
-protected:
-  /// Initialize features of race.
-  /// @param n    Name of race.
-  /// @param s    Identifier for sex.
-  /// @param mod  Modifiers to initial abilities.
-  /// @param min  Minimum abilities.
-  /// @param max  Maximum abilities.
-  race(std::string n, sex_id s, ab mod, ab min, ab max);
-
-  /// Return abilities, modified according to race, but only if initial
-  /// abilities be consistent with the race; otherwise, return a set of
-  /// abilities, every one of which is set to zero.
-  /// @param i  Initial abilities.
-  /// @return   Modified abilities, or zeros if inconsistent with race.
-  abilities::basic modify(abilities::initial i);
-};
-
-/// Features of dwarf race.
-struct dwarf: public race {
-  static ab const                mod; ///< Modifiers to initial abilities.
-  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
-  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
-
-  /// Initialize instance.
-  /// @param s  Identifier of sex.
-  dwarf(sex_id s): race("dwarf", s, mod, min[s], max[s]) {}
-};
-
-/// Features of elf race.
-struct elf: public race {
-  static ab const                mod; ///< Modifiers to initial abilities.
-  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
-  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
-
-  /// Initialize instance.
-  /// @param s  Identifier of sex.
-  elf(sex_id s): race("elf", s, mod, min[s], max[s]) {}
-};
-
-/// Features of gnome race.
-struct gnome: public race {
-  static ab const                mod; ///< Modifiers to initial abilities.
-  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
-  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
-
-  /// Initialize instance.
-  /// @param s  Identifier of sex.
-  gnome(sex_id s): race("gnome", s, mod, min[s], max[s]) {}
-};
-
-/// Features of half_elf race.
-struct half_elf: public race {
-  static ab const                mod; ///< Modifiers to initial abilities.
-  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
-  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
-
-  /// Initialize instance.
-  /// @param s  Identifier of sex.
-  half_elf(sex_id s): race("half_elf", s, mod, min[s], max[s]) {}
-};
-
-/// Features of halfling race.
-struct halfling: public race {
-  static ab const                mod; ///< Modifiers to initial abilities.
-  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
-  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
-
-  /// Initialize instance.
-  /// @param s  Identifier of sex.
-  halfling(sex_id s): race("halfling", s, mod, min[s], max[s]) {}
-};
-
-/// Features of half_orc race.
-struct half_orc: public race {
-  static ab const                mod; ///< Modifiers to initial abilities.
-  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
-  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
-
-  /// Initialize instance.
-  /// @param s  Identifier of sex.
-  half_orc(sex_id s): race("half_orc", s, mod, min[s], max[s]) {}
-};
-
-/// Features of human race.
-struct human: public race {
-  static ab const                mod; ///< Modifiers to initial abilities.
-  static std::array<ab, 2> const min; ///< Minimum abilities (male and fem.).
-  static std::array<ab, 2> const max; ///< Maximum abilities (male and fem.).
-
-  /// Initialize instance.
-  /// @param s  Identifier of sex.
-  human(sex_id s): race("human", s, mod, min[s], max[s]) {}
-};
+/// Return abilities, modified according to biology, but only if initial
+/// abilities be consistent with the biology; otherwise, return a set of
+/// abilities, every one of which is set to zero.
+///
+/// @param i   Initial abilities.
+/// @param sp  Species of character.
+/// @param sx  Sex of character.
+/// @return    Modified abilities, or zeros if inconsistent with biology.
+abilities::basic modify(abilities::initial i, species sp, sex sx);
 
 } // namespace race
 } // namespace dungeon
