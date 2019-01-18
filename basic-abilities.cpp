@@ -32,24 +32,13 @@ unsigned find_offset(unsigned min, T const &m, unsigned s) {
   return m.size() - 1;
 }
 
+
 st_features const &basic::st() const {
   enum : unsigned { NR = 15 }; // Number of records in table.
 
-  static std::array<unsigned, NR> const max_score({/***/ 3000,
-                                                   /***/ 5000,
-                                                   /***/ 7000,
-                                                   /***/ 9000,
-                                                   /**/ 11000,
-                                                   /**/ 13000,
-                                                   /**/ 15000,
-                                                   /**/ 16000,
-                                                   /**/ 17000,
-                                                   /**/ 18000,
-                                                   /**/ 18050,
-                                                   /**/ 18075,
-                                                   /**/ 18090,
-                                                   /**/ 18099,
-                                                   /**/ 18100});
+  static std::array<unsigned, NR> const max_score(
+      {3000, 5000, 7000, 9000, 11000, 13000, 15000, 16000, 17000, 18000, 18050,
+       18075, 18090, 18099, 18100});
 
   static std::array<st_features, NR> const table(
       {st_features{-3, -1, /**/ -350, 1, 1, /***/ 0},
@@ -72,6 +61,13 @@ st_features const &basic::st() const {
   unsigned const offset = find_offset(3000, max_score, score);
   return table[offset];
 }
+
+
+#if 0
+in_features const &basic::in() const {
+  // TBS
+}
+#endif
 
 } // namespace abilities
 } // namespace dungeon
