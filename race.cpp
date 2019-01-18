@@ -3,6 +3,9 @@
 ///
 /// @brief      Definition of
 ///             dungeon::race::ab,
+///             dungeon::race::mods,
+///             dungeon::race::mins,
+///             dungeon::race::maxs,
 ///             dungeon::race::modify.
 ///
 /// @copyright  2019 Thomas E. Vaughan

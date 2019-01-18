@@ -2,8 +2,8 @@
 /// @author     Thomas E. Vaughan
 ///
 /// @brief      Definition of
-///             dungeon::race::species_id,
-///             dungeon::race::sex_id;
+///             dungeon::race::species,
+///             dungeon::race::sex;
 ///             declaration of
 ///             dungeon::race::modify.
 ///
