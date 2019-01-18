@@ -1,16 +1,12 @@
-# Unit tests
-tests
-
-# CMake stuff
-CMakeCache.txt
-CMakeFiles
-Makefile
-cmake_install.cmake
-compile_commands.json
-
 # Doxygen stuff
 html
 latex
+
+# For YCM
+compile_commands.json
+
+# Build directory
+build
 
 # Prerequisites (if using mad-scientist approach)
 *.d
