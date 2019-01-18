@@ -89,7 +89,7 @@ abilities::basic modify(abilities::initial i, species sp, sex sx) {
   for (auto aid : abilities::id::_values()) {
     r.set(aid, i[aid] + tmods[aid]);
     if (r[aid] < tmins[aid]) {
-      return ab({0, 0, 0, 0, 0, 0, 0});
+      return ab({0, 0, 0, 0, 0, 0, 0}); // Indicate inconsistency.
     }
     if (r[aid] > tmaxs[aid]) {
       r.set(aid, tmaxs[aid]);
