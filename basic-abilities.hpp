@@ -9,7 +9,8 @@
 ///             dungeon::abilities::ws_features,
 ///             dungeon::abilities::dx_features,
 ///             dungeon::abilities::cn_features,
-///             dungeon::abilities::ch_features,
+///             dungeon::abilities::ch_features;
+///             declaration of
 ///             dungeon::abilities::basic.
 ///
 /// @copyright  2019 Thomas E. Vaughan
