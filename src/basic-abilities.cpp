@@ -27,7 +27,7 @@ template <typename F> using table = std::map<unsigned, F>;
 /// @tparam F  Type for set of features corresponding to ability-score.
 /// @param  s  Ability-score.
 /// @param  t  Ability-table.
-/// @param     Set of features corresponding to ability-score.
+/// @return    Set of features corresponding to ability-score.
 template <typename F> F const &record(unsigned s, table<F> const &t) {
   auto i = t.lower_bound(s);
   if (i == t.end()) {
