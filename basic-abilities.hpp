@@ -63,9 +63,10 @@ struct in_features {
 
 /// Features pertaining to wisdom-ability.
 struct ws_features {
-  int mag_attack_adj; ///< Adjustment to saving throw against magical attack.
-  int spell_bonus;    ///< Cleric's spell bonus.
-  int failure_prob;   ///< Cleric's percentage of spell-failure.
+  int mag_attack_adj;  ///< Adjustment to saving throw against magical attack.
+  int spell_bonus;     ///< Spell-level of cleric's one bonus spell.
+  int max_spell_level; ///< Cleric's maximum spell-level.
+  int failure_prob;    ///< Cleric's percentage of spell-failure.
 };
 
 /// Features pertaining to dexterity-ability.
@@ -81,9 +82,10 @@ struct dx_features {
 
 /// Features pertaining to constitution-ability.
 struct cn_features {
-  int hit_point_adj; ///< Hit-points adjustment.
-  int shock_surv;    ///< Percentage chance of surviving system-shock.
-  int res_surv;      ///< Percentage chance of surviving resurrection.
+  int hp_adj;         ///< Hit-points adjustment.
+  int fighter_hp_adj; ///< Hit-points adjustment for a fighter.
+  int shock_surv;     ///< Percentage chance of surviving system-shock.
+  int res_surv;       ///< Percentage chance of surviving resurrection.
 };
 
 /// Features pertaining to charisma-ability.
