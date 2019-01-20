@@ -1,25 +1,27 @@
-set (CMAKE_EXPORT_COMPILE_COMMANDS ON) # For youcompleteme.
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g -O0 -std=c++14")
+set (CMAKE_EXPORT_COMPILE_COMMANDS ON) # For youcompleteme.
 
-include_directories(.)
-aux_source_directory(. dungeon_SRCS)
-add_executable(tests ${dungeon_SRCS})
+add_subdirectory (test)
+
+add_library (dungeon SHARED
+   basic-abilities.cpp
+   initial-abilities.cpp
+   race.cpp
+   roll-dice.cpp)
 
 # Make format target that runs clang-format on sources.
-add_custom_target(format
+add_custom_target (format
    cd ${CMAKE_CURRENT_SOURCE_DIR}\;
-   for i in *.cpp *.hpp\; do
-      clang-format -i $$i\;
-   done)
+   find . -name '*.cpp' -exec clang-format -i {} \\\;\;
+   find . -name '*.hpp' -exec clang-format -i {} \\\;)
 
-find_program(SYMLINKS symlinks)
+find_program (SYMLINKS symlinks)
 if (NOT SYMLINKS)
    message("symlinks program not found; symlinks will not be relativized.")
-   set (SYMLINKS "")
 endif ()
 
 # Generate link so that vim can find database in source directory.
-add_custom_target(ycm_db ALL
+add_custom_target (ycm_db ALL
    cd ${CMAKE_CURRENT_SOURCE_DIR}\;
    ln -fs ${CMAKE_BINARY_DIR}/compile_commands.json\;
    if test -x ${SYMLINKS}\; then ${SYMLINKS} -c .\; fi)
