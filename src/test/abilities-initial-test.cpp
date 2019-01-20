@@ -1,11 +1,12 @@
-/// @file       initial-abilities-test.cpp
+/// @file       abilities-initial-test.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Test of dungeon::initial_abilities.
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "initial-abilities.hpp"
+#include "abilities/initial.hpp"
 #include "catch.hpp" // for TEST_CASE
+#include <ctime>     // for time
 
 using namespace dungeon::abilities;
 

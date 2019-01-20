@@ -14,7 +14,7 @@
 #define DUNGEON_RACE_HPP
 
 #include "enum.h"                // for BETTER_ENUM
-#include "initial-abilities.hpp" // for initial_abilities
+#include "abilities/initial.hpp" // for initial_abilities
 
 namespace dungeon {
 namespace race {

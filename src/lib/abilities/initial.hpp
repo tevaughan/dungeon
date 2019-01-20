@@ -7,7 +7,7 @@
 #ifndef DUNGEON_INITIAL_ABILITIES_HPP
 #define DUNGEON_INITIAL_ABILITIES_HPP
 
-#include "basic-abilities.hpp" // for basic_abilities
+#include "basic.hpp" // for basic_abilities
 
 namespace dungeon {
 namespace abilities {

@@ -17,10 +17,13 @@ namespace dungeon {
 namespace race {
 
 /// Allow easy setting of abilities.
-struct ab: public abilities::basic {
+class ab: public abilities::basic {
+public:
   ab(ar a) { a_ = a; } ///< Copy abilities from array.
   ab() = default;      ///< Allow default construction.
   using basic::set;    ///< Allow setting elements.
+  /// Return reference to this as parent-type.
+  basic const &basic() const { return *this; }
 };
 
 /// Extract modifiers by species.
@@ -92,13 +95,15 @@ abilities::basic modify(abilities::initial i, species sp, sex sx) {
   for (auto aid : abilities::id::_values()) {
     r.set(aid, i[aid] + tmods[aid]);
     if (r[aid] < tmins[aid]) {
-      return ab({0, 0, 0, 0, 0, 0, 0}); // Indicate inconsistency.
+      // Indicate inconsistency.
+      ab const a({0, 0, 0, 0, 0, 0, 0});
+      return a.basic();
     }
     if (r[aid] > tmaxs[aid]) {
       r.set(aid, tmaxs[aid]);
     }
   }
-  return r;
+  return r.basic();
 }
 
 } // namespace race

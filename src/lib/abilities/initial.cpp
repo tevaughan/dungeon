@@ -4,7 +4,7 @@
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "initial-abilities.hpp"
+#include "initial.hpp"
 #include "roll-dice.hpp"
 
 namespace dungeon {

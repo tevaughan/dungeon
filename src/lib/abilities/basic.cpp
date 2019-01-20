@@ -4,7 +4,7 @@
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "basic-abilities.hpp"
+#include "basic.hpp"
 #include "table.hpp"
 #include <iostream> // for cerr, endl
 
