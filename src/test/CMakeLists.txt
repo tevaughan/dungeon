@@ -5,5 +5,5 @@ add_executable (tests
    tests.cpp)
 
 target_link_libraries (tests dungeon)
-target_include_directories (tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
-target_link_directories (tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_include_directories (tests PRIVATE ${CMAKE_SOURCE_DIR}/src/lib)
+target_link_directories (tests PRIVATE ${CMAKE_SOURCE_DIR}/src/lib)

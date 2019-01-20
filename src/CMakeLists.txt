@@ -2,12 +2,7 @@ set (CMAKE_CXX_FLAGS
    "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -g -O0 -std=c++14")
 
 add_subdirectory (test)
-
-add_library (dungeon SHARED
-   basic-abilities.cpp
-   initial-abilities.cpp
-   race.cpp
-   roll-dice.cpp)
+add_subdirectory (lib)
 
 # Make format target that runs clang-format on sources.
 add_custom_target (format
