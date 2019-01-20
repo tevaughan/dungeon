@@ -30,7 +30,9 @@ mazes.
 
 ## License
 
-Dungeon is coyrighted by Thomas E. Vaughan and distributed under the terms of
-the GPL, version 3 or later, except for the file 'enum.h', which is copyrighted
-by Anton Bachin and distributed under the terms of the BSD two-clause (FreeBSD)
-license.  See 'LICENSE' and 'enum.h', respectively, for details.
+1. Dungeon is coyrighted by Thomas E. Vaughan and distributed under the [terms
+   of the GPL, version 3 or later](LICENSE), except for
+2. [enum.h](src/lib/enum.h), which is copyrighted by Anton Bachin and
+   distributed under the terms of the BSD two-clause (FreeBSD) license and
+3. [catch.hpp](src/test/catch.hpp), which is copyrighted by Two Blue Cubes Ltd.
+   and distributed under the Boost Software License, Version 1.0.
