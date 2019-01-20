@@ -5,36 +5,11 @@
 /// @license    GPL3; see 'LICENSE' file.
 
 #include "basic-abilities.hpp"
+#include "table.hpp"
 #include <iostream> // for cerr, endl
-#include <map>      // for map
 
 namespace dungeon {
 namespace abilities {
-
-/// Type of ability-features table for features of type F.
-/// @tparam F  Type for set of features corresponding to ability-score.
-template <typename F> using table = std::map<unsigned, F>;
-
-/// Look up record in ability-table.
-///
-/// The function, map::lower_bound, is used because the key for each record is
-/// the maximum ability-score corresponding to the record.  map::lower_bound
-/// finds the first element whose key is not less than the relevant
-/// ability-score in the instance of basic.  If there be no such element, then
-/// the ability-score in the instance is larger than the largest tabulated
-/// score; so the last record in the table is returned.
-///
-/// @tparam F  Type for set of features corresponding to ability-score.
-/// @param  s  Ability-score.
-/// @param  t  Ability-table.
-/// @return    Set of features corresponding to ability-score.
-template <typename F> F const &record(unsigned s, table<F> const &t) {
-  auto i = t.lower_bound(s);
-  if (i == t.end()) {
-    return t.rbegin()->second;
-  }
-  return i->second;
-}
 
 // Query strength-table.
 st_features const &basic::st() const {
@@ -54,7 +29,7 @@ st_features const &basic::st() const {
       {/**/ 18090, st_features{+2, +4, /**/ 1500, 4, 1, /**/ 30}},
       {/**/ 18099, st_features{+2, +5, /**/ 2000, 4, 1, /**/ 35}},
       {/**/ 18100, st_features{+3, +6, /**/ 3000, 5, 2, /**/ 40}}};
-  return record(get(id::ST) * 1000 + get(id::ES), t);
+  return t[get(id::ST) * 1000 + get(id::ES)];
 }
 
 // Query intelligence-table.
@@ -72,7 +47,7 @@ in_features const &basic::in() const {
       {/**/ 17, in_features{6, /**/ 75, /***/ 8, /**/ 14}},
       {/**/ 18, in_features{7, /**/ 85, /***/ 9, /**/ 18}},
       {/**/ 19, in_features{7, /**/ 95, /**/ 10, /**/ 99}}}; // 99 means all.
-  return record(get(id::IN), t);
+  return t[get(id::IN)];
 }
 
 // Query wisdom-table.
@@ -91,7 +66,7 @@ ws_features const &basic::ws() const {
       {/**/ 16, ws_features{+2, 2, 5, /****/ 0}},
       {/**/ 17, ws_features{+3, 3, 6, /****/ 0}},
       {/**/ 18, ws_features{+4, 4, 7, /****/ 0}}};
-  return record(get(id::WS), t);
+  return t[get(id::WS)];
 }
 
 // Query dexterity-table.
@@ -111,7 +86,7 @@ dx_features const &basic::dx() const {
       {/**/ 16, dx_features{+1, -2, +00, +05, +00, +00, +00}},
       {/**/ 17, dx_features{+2, -3, +05, +10, +00, +05, +05}},
       {/**/ 18, dx_features{+3, -4, +10, +15, +05, +10, +10}}};
-  return record(get(id::DX), t);
+  return t[get(id::DX)];
 }
 
 // Query constitution-table.
@@ -134,7 +109,7 @@ cn_features const &basic::cn() const {
       {/**/ 17, cn_features{+2, +3, 97, /***/ 98}},
       {/**/ 18, cn_features{+2, +4, 99, /**/ 100}},
   };
-  return record(get(id::CN), t);
+  return t[get(id::CN)];
 }
 
 // Query charisma-table.
@@ -154,7 +129,7 @@ ch_features const &basic::ch() const {
       {/**/ 16, ch_features{/***/ 8, /**/ +20, /**/ +25}},
       {/**/ 17, ch_features{/**/ 10, /**/ +30, /**/ +30}},
       {/**/ 18, ch_features{/**/ 15, /**/ +40, /**/ +35}}};
-  return record(get(id::CH), t);
+  return t[get(id::CH)];
 }
 
 } // namespace abilities
