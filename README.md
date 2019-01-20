@@ -35,4 +35,4 @@ the GPL, version 3 or later](LICENSE), except for
  - [enum.h](src/lib/enum.h), which is copyrighted by Anton Bachin and
    distributed under the terms of the BSD two-clause (FreeBSD) license and
  - [catch.hpp](src/test/catch.hpp), which is copyrighted by Two Blue Cubes Ltd.
-   and distributed under the Boost Software License, Version 1.0.
+   and distributed under the terms of the Boost Software License, Version 1.0.
