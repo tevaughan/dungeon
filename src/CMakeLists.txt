@@ -1,5 +1,5 @@
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g -O0 -std=c++14")
-set (CMAKE_EXPORT_COMPILE_COMMANDS ON) # For youcompleteme.
+set (CMAKE_CXX_FLAGS
+   "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -g -O0 -std=c++14")
 
 add_subdirectory (test)
 
@@ -15,17 +15,12 @@ add_custom_target (format
    find . -name '*.cpp' -exec clang-format -i {} \\\;\;
    find . -name '*.hpp' -exec clang-format -i {} \\\;)
 
-find_program (SYMLINKS symlinks)
-if (NOT SYMLINKS)
-   message("symlinks program not found; symlinks will not be relativized.")
-endif ()
-
-# Generate link so that vim can find database in source directory.
-add_custom_target (ycm_db ALL
+# Make dox target that runs doxygen.
+add_custom_target(dox
    cd ${CMAKE_CURRENT_SOURCE_DIR}\;
-   ln -fs ${CMAKE_BINARY_DIR}/compile_commands.json\;
-   if test -x ${SYMLINKS}\; then ${SYMLINKS} -c .\; fi)
+   (cat Doxyfile\; echo "OUTPUT_DIRECTORY=${CMAKE_CURRENT_BINARY_DIR}") | doxygen -)
 
-# Make it so that 'compile_commands.json' is removed on clean.
+# Make it so that html and latex directories are removed on clean.
 set_property (DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
-   "${CMAKE_CURRENT_SOURCE_DIR}/compile_commands.json")
+   "${CMAKE_CURRENT_BINARY_DIR}/html"
+   "${CMAKE_CURRENT_BINARY_DIR}/latex")
