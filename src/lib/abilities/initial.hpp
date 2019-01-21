@@ -13,7 +13,7 @@ namespace dungeon {
 namespace abilities {
 
 /// Initial abilities generated at random.
-struct initial: public basic {
+struct initial : public basic {
   /// Generate initial abilities at random.
   ///
   /// Each initial ability (apart from exceptional strength) is obtained by

@@ -28,7 +28,8 @@ initial::initial(unsigned &s) {
           ++b15;
         }
       } break;
-      case id::ES: break;
+      case id::ES:
+        break;
       }
     }
   } while (b15 < 2);

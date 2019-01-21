@@ -4,8 +4,8 @@
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "race.hpp"
 #include "catch.hpp" // for TEST_CASE
+#include "race.hpp"
 
 using namespace dungeon::race;
 using namespace dungeon::abilities;

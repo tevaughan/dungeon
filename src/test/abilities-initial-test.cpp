@@ -24,7 +24,7 @@ TEST_CASE("Each of two or more abilities has value >= 15.", "[abilities]") {
   unsigned s = time(nullptr);
   for (unsigned i = 0; i < 1000; ++i) {
     initial const a(s);
-    unsigned      b15 = 0;
+    unsigned b15 = 0;
     check(a[id::ST], b15);
     check(a[id::IN], b15);
     check(a[id::WS], b15);

@@ -16,7 +16,7 @@ namespace dungeon {
 /// search key corresponding to the record.
 ///
 /// @tparam R  Type of each record (row) in table.
-template <typename R> struct table: protected std::map<int, R> {
+template <typename R> struct table : protected std::map<int, R> {
   using std::map<int, R>::map; ///< Expose ancestor's constructor.
 
   /// Look up record.

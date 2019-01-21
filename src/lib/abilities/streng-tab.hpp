@@ -28,7 +28,7 @@ struct streng_rec {
 };
 
 table<streng_rec> const &streng_tab();
-}
-}
+} // namespace abilities
+} // namespace dungeon
 
 #endif // ndef DUNGEON_ABILITIES_STRENG_TAB_HPP

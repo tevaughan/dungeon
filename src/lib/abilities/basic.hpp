@@ -18,10 +18,10 @@
 #ifndef DUNGEON_BASIC_ABILITIES_HPP
 #define DUNGEON_BASIC_ABILITIES_HPP
 
-#include "enum.h"  // for BETTER_ENUM
+#include "enum.h" // for BETTER_ENUM
+#include "streng-tab.hpp"
 #include <array>   // for array
 #include <cstdint> // for int8_t
-#include "streng-tab.hpp"
 
 namespace dungeon {
 namespace abilities {
@@ -111,7 +111,9 @@ public:
   int operator[](id i) const { return get(i); }
 
   /// Features pertaining to strength-ability.
-  streng_rec const &st() const { return streng_tab()[get(id::ST)*1000+get(id::ES)];}
+  streng_rec const &st() const {
+    return streng_tab()[get(id::ST) * 1000 + get(id::ES)];
+  }
   in_features const &in() const; ///< Features pertaining to intel.-ability.
   ws_features const &ws() const; ///< Features pertaining to wisdom-ability.
   dx_features const &dx() const; ///< Features pertaining to dexterity-ability.

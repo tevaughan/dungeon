@@ -4,26 +4,26 @@
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "roll-dice.hpp"
 #include "catch.hpp" // for TEST_CASE
-#include <cmath>     // for sqrt
-#include <cstdio>    // for printf
-#include <ctime>     // for time
-#include <vector>    // for vector
+#include "roll-dice.hpp"
+#include <cmath>  // for sqrt
+#include <cstdio> // for printf
+#include <ctime>  // for time
+#include <vector> // for vector
 
 using namespace dungeon;
 using namespace std;
 
 /// A sequence of rolls, each involving a certain number of dice, every one of
 /// which has the same number of facets.
-struct roll_sequence: public vector<unsigned> {
+struct roll_sequence : public vector<unsigned> {
   /// Initialize the value of each roll in the sequence.
   /// @param n  Number of rolls.
   /// @param d  Number of dice on each roll.
   /// @param f  Number of facets on each die.
   /// @param s  Reference to state of random-number generator.
-  roll_sequence(unsigned n, unsigned d, unsigned f, unsigned &s):
-      vector<unsigned>(n) {
+  roll_sequence(unsigned n, unsigned d, unsigned f, unsigned &s)
+      : vector<unsigned>(n) {
     for (auto &e : *this) {
       e = roll_dice(d, f, s);
     }
@@ -32,7 +32,7 @@ struct roll_sequence: public vector<unsigned> {
 
 TEST_CASE("Seed must be repeated to repeat sequence.", "[dice]") {
   enum { N = 20, D = 3, F = 6 };
-  unsigned            s = 10;
+  unsigned s = 10;
   roll_sequence const r1(N, D, F, s);
   s = 10;
   roll_sequence const r2(N, D, F, s);
@@ -74,7 +74,7 @@ struct hlim {
 
   /// Initialize values so that first call to update() is guaranteed to change
   /// both limits.
-  hlim(): min(N), max(0) {}
+  hlim() : min(N), max(0) {}
 
   /// Update min and max.
   ///
@@ -112,13 +112,13 @@ void draw_histogram(unsigned sz, hlim const &lim, vector<unsigned> const &h) {
     unsigned const k = i + D;
     printf("%02d ", k);
     double constexpr MAX_W = 69.99; // Histogram width in characters.
-    double const   c       = MAX_W / (lim.max - lim.min);
-    double const   s       = c * NSD * stdev(h[i], N);
-    double const   m       = c * (h[i] - lim.min);
-    unsigned const im      = unsigned(m);
-    unsigned const il      = unsigned(m - s);
-    unsigned const ih      = unsigned(m + s);
-    unsigned const iz      = unsigned(c * (0 - lim.min));
+    double const c = MAX_W / (lim.max - lim.min);
+    double const s = c * NSD * stdev(h[i], N);
+    double const m = c * (h[i] - lim.min);
+    unsigned const im = unsigned(m);
+    unsigned const il = unsigned(m - s);
+    unsigned const ih = unsigned(m + s);
+    unsigned const iz = unsigned(c * (0 - lim.min));
     for (unsigned j = 0; j <= ih; ++j) {
       if (j == im) {
         printf("#");
@@ -139,8 +139,8 @@ void draw_histogram(unsigned sz, hlim const &lim, vector<unsigned> const &h) {
 
 TEST_CASE("Bell curve is produced for 3d6.", "[dice]") {
   enum { /* facets */ F = 6, MAX = D * F, MIN = D, SZ = MAX - MIN + 1 };
-  vector<unsigned>    h(SZ, 0);
-  unsigned            s = time(nullptr);
+  vector<unsigned> h(SZ, 0);
+  unsigned s = time(nullptr);
   roll_sequence const r(N, D, F, s);
   for (auto &e : r) {
     ++h[e - D]; // Add element to histogram.
@@ -150,11 +150,11 @@ TEST_CASE("Bell curve is produced for 3d6.", "[dice]") {
   // even or odd SZ.
   for (unsigned i = 0; i < (SZ + 1) / 2; ++i) {
     // Test symmetry of distribution.
-    unsigned const j  = SZ - i - 1;
-    double const   nl = h[i];
-    double const   nr = h[j];
-    double const   vl = var(nl, N);
-    double const   vr = var(nr, N);
+    unsigned const j = SZ - i - 1;
+    double const nl = h[i];
+    double const nr = h[j];
+    double const vl = var(nl, N);
+    double const vr = var(nr, N);
     REQUIRE(fabs(nl - nr) <= NSD * sqrt(vl + vr));
     if (i > 0) {
       // Test monotonicity of each wing.
