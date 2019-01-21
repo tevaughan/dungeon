@@ -41,8 +41,11 @@ protected:
 
   array a_; ///< Storage for abilities.
 
-  /// Set attributes to zero; disallow public construction.
-  scores() { a_.fill(0); }
+  scores() { a_.fill(0); } ///< Set attributes to zero by default.
+
+  /// Initialize attributes.
+  /// @param a  Array from which to initialize.
+  scores(array const &a) : a_(a) {}
 
   /// Set ability.
   /// @param i  Identifier of ability.
