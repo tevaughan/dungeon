@@ -1,14 +1,14 @@
-/// @file       abilities-initial-test.cpp
+/// @file       test/ability-initial-test.cpp
 /// @author     Thomas E. Vaughan
-/// @brief      Test of dungeon::initial_abilities.
+/// @brief      Test of dungeon::ability::initial.
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "abilities/initial.hpp"
+#include "ability/initial.hpp"
 #include "catch.hpp" // for TEST_CASE
 #include <ctime>     // for time
 
-using namespace dungeon::abilities;
+using namespace dungeon::ability;
 
 /// Increment counter if ability be at least 15.
 /// @param a    Ability.

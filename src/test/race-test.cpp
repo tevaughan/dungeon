@@ -1,4 +1,4 @@
-/// @file       race-test.cpp
+/// @file       test/race-test.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Tests of dungeon::race.
 /// @copyright  2019 Thomas E. Vaughan
@@ -7,10 +7,10 @@
 #include "catch.hpp" // for TEST_CASE
 #include "race.hpp"
 
+using namespace dungeon::ability;
 using namespace dungeon::race;
-using namespace dungeon::abilities;
 
-void print(basic const &b) {
+void print(scores const &b) {
   printf("st=%02d in=%02d ws=%02d dx=%02d cn=%02d ch=%02d", //
          b[id::ST], b[id::IN], b[id::WS], b[id::DX], b[id::CN], b[id::CH]);
 }

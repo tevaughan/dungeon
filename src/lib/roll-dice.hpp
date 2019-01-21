@@ -1,4 +1,4 @@
-/// @file       roll-dice.hpp
+/// @file       lib/roll-dice.hpp
 /// @author     Thomas E. Vaughan
 /// @brief      Declaration of dungeon::roll_dice.
 /// @copyright  2019 Thomas E. Vaughan

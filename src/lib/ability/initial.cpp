@@ -1,6 +1,6 @@
-/// @file       initial-abilities.cpp
+/// @file       lib/ability/initial.cpp
 /// @author     Thomas E. Vaughan
-/// @brief      Definition of dungeon::initial_abilities.
+/// @brief      Definition of dungeon::ability::initial.
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
@@ -8,7 +8,7 @@
 #include "roll-dice.hpp"
 
 namespace dungeon {
-namespace abilities {
+namespace ability {
 
 initial::initial(unsigned &s) {
   int b15;
@@ -35,5 +35,5 @@ initial::initial(unsigned &s) {
   } while (b15 < 2);
 }
 
-} // namespace abilities
+} // namespace ability
 } // namespace dungeon

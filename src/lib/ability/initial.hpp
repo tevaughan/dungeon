@@ -1,19 +1,19 @@
-/// @file       initial-abilities.hpp
+/// @file       lib/ability/initial.hpp
 /// @author     Thomas E. Vaughan
-/// @brief      Declaration of dungeon::abilities::initial.
+/// @brief      Declaration of dungeon::ability::initial.
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#ifndef DUNGEON_INITIAL_ABILITIES_HPP
-#define DUNGEON_INITIAL_ABILITIES_HPP
+#ifndef DUNGEON_ABL_INITIAL_HPP
+#define DUNGEON_ABL_INITIAL_HPP
 
-#include "basic.hpp" // for basic_abilities
+#include "scores.hpp" // for scores
 
 namespace dungeon {
-namespace abilities {
+namespace ability {
 
 /// Initial abilities generated at random.
-struct initial : public basic {
+struct initial : public scores {
   /// Generate initial abilities at random.
   ///
   /// Each initial ability (apart from exceptional strength) is obtained by
@@ -24,7 +24,7 @@ struct initial : public basic {
   initial(unsigned &s);
 };
 
-} // namespace abilities
+} // namespace ability
 } // namespace dungeon
 
-#endif // ndef DUNGEON_INITIAL_ABILITIES_HPP
+#endif // ndef DUNGEON_ABL_INITIAL_HPP

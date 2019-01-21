@@ -1,4 +1,4 @@
-/// @file       tests.cpp
+/// @file       test/tests.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Provide main() for catch.
 /// @copyright  2019 Thomas E. Vaughan

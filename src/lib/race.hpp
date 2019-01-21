@@ -1,4 +1,4 @@
-/// @file       race.hpp
+/// @file       lib/race.hpp
 /// @author     Thomas E. Vaughan
 ///
 /// @brief      Definition of
@@ -13,8 +13,8 @@
 #ifndef DUNGEON_RACE_HPP
 #define DUNGEON_RACE_HPP
 
-#include "abilities/initial.hpp" // for initial_abilities
-#include "enum.h"                // for BETTER_ENUM
+#include "ability/initial.hpp" // for initial_abilities
+#include "enum.h"              // for BETTER_ENUM
 
 namespace dungeon {
 namespace race {
@@ -34,7 +34,7 @@ BETTER_ENUM(sex, unsigned, MALE, FEMALE);
 /// @param sp  Species of character.
 /// @param sx  Sex of character.
 /// @return    Modified abilities, or zeros if inconsistent with biology.
-abilities::basic modify(abilities::initial i, species sp, sex sx);
+ability::scores modify(ability::initial i, species sp, sex sx);
 
 } // namespace race
 } // namespace dungeon

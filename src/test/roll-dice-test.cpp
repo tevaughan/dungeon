@@ -1,4 +1,4 @@
-/// @file       roll-dice-test.cpp
+/// @file       test/roll-dice-test.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Tests of function dungeon::roll_dice.
 /// @copyright  2019 Thomas E. Vaughan

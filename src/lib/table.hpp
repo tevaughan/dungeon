@@ -1,4 +1,4 @@
-/// @file       table.hpp
+/// @file       lib/table.hpp
 /// @author     Thomas E. Vaughan
 /// @brief      Definition of dungeon::table
 /// @copyright  2019 Thomas E. Vaughan

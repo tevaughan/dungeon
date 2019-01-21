@@ -1,4 +1,4 @@
-/// @file       race.cpp
+/// @file       lib/race.cpp
 /// @author     Thomas E. Vaughan
 ///
 /// @brief      Definition of
@@ -17,13 +17,13 @@ namespace dungeon {
 namespace race {
 
 /// Allow easy setting of abilities.
-class ab : public abilities::basic {
+class ab : public ability::scores {
 public:
-  ab(ar a) { a_ = a; } ///< Copy abilities from array.
-  ab() = default;      ///< Allow default construction.
-  using basic::set;    ///< Allow setting elements.
+  ab(array a) { a_ = a; } ///< Copy abilities from array.
+  ab() = default;         ///< Allow default construction.
+  using scores::set;      ///< Allow setting elements.
   /// Return reference to this as parent-type.
-  basic const &basic() const { return *this; }
+  scores const &basic() const { return *this; }
 };
 
 /// Extract modifiers by species.
@@ -87,12 +87,12 @@ static ab const &maxs(species sp, sex sx) {
   return m[sp._to_integral() * NSX + sx._to_integral()];
 }
 
-abilities::basic modify(abilities::initial i, species sp, sex sx) {
+ability::scores modify(ability::initial i, species sp, sex sx) {
   ab const &tmods = mods(sp);
   ab const &tmins = mins(sp, sx);
   ab const &tmaxs = maxs(sp, sx);
   ab r; // Return value.
-  for (auto aid : abilities::id::_values()) {
+  for (auto aid : ability::id::_values()) {
     r.set(aid, i[aid] + tmods[aid]);
     if (r[aid] < tmins[aid]) {
       // Indicate inconsistency.

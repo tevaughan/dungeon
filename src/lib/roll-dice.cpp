@@ -1,4 +1,4 @@
-/// @file       roll-dice.cpp
+/// @file       lib/roll-dice.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Definition of dungeon::roll_dice.
 /// @copyright  2019 Thomas E. Vaughan

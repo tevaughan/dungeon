@@ -1,4 +1,4 @@
-/// @file       abilities/streng-tab.cpp
+/// @file       lib/ability/streng-tab.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Definition of dungeon::abilities::streng_tab.
 /// @copyright  2019 Thomas E. Vaughan
@@ -7,7 +7,7 @@
 #include "streng-tab.hpp"
 
 namespace dungeon {
-namespace abilities {
+namespace ability {
 
 table<streng_rec> const &streng_tab() {
   static table<streng_rec> const t{
@@ -29,5 +29,5 @@ table<streng_rec> const &streng_tab() {
   return t;
 }
 
-} // namespace abilities
+} // namespace ability
 } // namespace dungeon

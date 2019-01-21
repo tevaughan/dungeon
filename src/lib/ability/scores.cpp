@@ -1,18 +1,18 @@
-/// @file       abilities/basic.cpp
+/// @file       lib/ability/scores.cpp
 /// @author     Thomas E. Vaughan
-/// @brief      Implementation of dungeon::abilities::basic.
+/// @brief      Implementation of dungeon::ability::scores.
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#include "basic.hpp"
+#include "scores.hpp"
 #include "table.hpp"
 #include <iostream> // for cerr, endl
 
 namespace dungeon {
-namespace abilities {
+namespace ability {
 
 // Query intelligence-table.
-in_features const &basic::in() const {
+in_features const &scores::in() const {
   static table<in_features> const t{
       {/***/ 7, in_features{0, /***/ 0, /***/ 0, /***/ 0}},
       {/***/ 8, in_features{1, /***/ 0, /***/ 0, /***/ 0}},
@@ -30,7 +30,7 @@ in_features const &basic::in() const {
 }
 
 // Query wisdom-table.
-ws_features const &basic::ws() const {
+ws_features const &scores::ws() const {
   static table<ws_features> const t{
       {/***/ 3, ws_features{-3, 0, 0, /**/ 100}},
       {/***/ 4, ws_features{-2, 0, 0, /**/ 100}},
@@ -49,7 +49,7 @@ ws_features const &basic::ws() const {
 }
 
 // Query dexterity-table.
-dx_features const &basic::dx() const {
+dx_features const &scores::dx() const {
   static table<dx_features> const t{
       {/***/ 3, dx_features{-3, +4, +00, +00, +00, +00, +00}},
       {/***/ 4, dx_features{-2, +3, +00, +00, +00, +00, +00}},
@@ -69,7 +69,7 @@ dx_features const &basic::dx() const {
 }
 
 // Query constitution-table.
-cn_features const &basic::cn() const {
+cn_features const &scores::cn() const {
   static table<cn_features> const t{
       {/***/ 3, cn_features{-2, -2, 35, /***/ 40}},
       {/***/ 4, cn_features{-1, -1, 40, /***/ 45}},
@@ -92,7 +92,7 @@ cn_features const &basic::cn() const {
 }
 
 // Query charisma-table.
-ch_features const &basic::ch() const {
+ch_features const &scores::ch() const {
   static table<ch_features> const t{
       {/***/ 3, ch_features{/***/ 1, /**/ -30, /**/ -25}},
       {/***/ 4, ch_features{/***/ 1, /**/ -25, /**/ -20}},
@@ -111,5 +111,5 @@ ch_features const &basic::ch() const {
   return t[get(id::CH)];
 }
 
-} // namespace abilities
+} // namespace ability
 } // namespace dungeon

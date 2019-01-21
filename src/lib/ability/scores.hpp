@@ -1,30 +1,22 @@
-/// @file       abilities/basic.hpp
+/// @file       lib/ability/scores.hpp
 /// @author     Thomas E. Vaughan
 ///
-/// @brief      Definition of
-///             dungeon::abilities::word_size,
-///             dungeon::abilities::id,
-///             dungeon::abilities::in_features,
-///             dungeon::abilities::ws_features,
-///             dungeon::abilities::dx_features,
-///             dungeon::abilities::cn_features,
-///             dungeon::abilities::ch_features;
-///             declaration of
-///             dungeon::abilities::basic.
+/// @brief      Definition of dungeon::ability::word_size,
+///             declaration of dungeon::ability::scores.
 ///
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#ifndef DUNGEON_BASIC_ABILITIES_HPP
-#define DUNGEON_BASIC_ABILITIES_HPP
+#ifndef DUNGEON_ABILITY_SCORES_HPP
+#define DUNGEON_ABILITY_SCORES_HPP
 
-#include "enum.h" // for BETTER_ENUM
-#include "streng-tab.hpp"
-#include <array>   // for array
-#include <cstdint> // for int8_t
+#include "id.hpp"         // for id
+#include "streng-tab.hpp" // for streng_rec, streng_tab
+#include <array>          // for array
+#include <cstdint>        // for int8_t
 
 namespace dungeon {
-namespace abilities {
+namespace ability {
 
 /// Return size of smallest word that can store m bytes of data.
 /// @param m  Number of bytes that need to be stored in word.
@@ -35,13 +27,6 @@ inline unsigned constexpr word_size(unsigned m) {
   }
   return n;
 }
-
-/// Identifier for each ability.
-///
-/// ES is for exceptional strength, and the corresponding ability is zero
-/// whenever strength be below 18 or, even if 18, whenever the character is not
-/// a fighter.
-BETTER_ENUM(id, unsigned, ST = 0, IN, WS, DX, CN, CH, ES);
 
 /// Features pertaining to intelligence-ability.
 struct in_features {
@@ -86,15 +71,15 @@ struct ch_features {
 };
 
 /// The parameters that define the basic abilities of a character in the game.
-class basic {
+class scores {
 protected:
   /// Type of internal storage for basic abilities.
-  using ar = std::array<int8_t, word_size(id::_size())>;
+  using array = std::array<int8_t, word_size(id::_size())>;
 
-  ar a_; ///< Storage for abilities.
+  array a_; ///< Storage for abilities.
 
   /// Set attributes to zero; disallow public construction.
-  basic() { a_.fill(0); }
+  scores() { a_.fill(0); }
 
   /// Set ability.
   /// @param i  Identifier of ability.
@@ -120,8 +105,9 @@ public:
   cn_features const &cn() const; ///< Features pertaining to const.-ability.
   ch_features const &ch() const; ///< Features pertaining to charisma-ability.
 };
+// class scores
 
-} // namespace abilities
+} // namespace ability
 } // namespace dungeon
 
-#endif // ndef DUNGEON_BASIC_ABILITIES_HPP
+#endif // ndef DUNGEON_ABILITY_SCORES_HPP

@@ -1,21 +1,21 @@
-/// @file       abilities/streng-tab.hpp
+/// @file       lib/ability/streng-tab.hpp
 /// @author     Thomas E. Vaughan
 ///
 /// @brief      Definition of
-///             dungeon::abilities::streng_rec;
+///             dungeon::ability::streng_rec;
 ///             declaration of
-///             dungion::abilities::streng_tab.
+///             dungion::ability::streng_tab.
 ///
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
-#ifndef DUNGEON_ABILITIES_STRENG_TAB_HPP
-#define DUNGEON_ABILITIES_STRENG_TAB_HPP
+#ifndef DUNGEON_ABILITY_STRENG_TAB_HPP
+#define DUNGEON_ABILITY_STRENG_TAB_HPP
 
 #include "table.hpp"
 
 namespace dungeon {
-namespace abilities {
+namespace ability {
 
 /// Record in strength-ability table.
 struct streng_rec {
@@ -28,7 +28,8 @@ struct streng_rec {
 };
 
 table<streng_rec> const &streng_tab();
-} // namespace abilities
+
+} // namespace ability
 } // namespace dungeon
 
-#endif // ndef DUNGEON_ABILITIES_STRENG_TAB_HPP
+#endif // ndef DUNGEON_ABILITY_STRENG_TAB_HPP

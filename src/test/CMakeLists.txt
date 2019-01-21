@@ -1,5 +1,5 @@
 add_executable (tests
-   abilities-initial-test.cpp
+   ability-initial-test.cpp
    race-test.cpp
    roll-dice-test.cpp
    tests.cpp)
