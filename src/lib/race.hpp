@@ -13,8 +13,8 @@
 #ifndef DUNGEON_RACE_HPP
 #define DUNGEON_RACE_HPP
 
-#include "enum.h"                // for BETTER_ENUM
 #include "abilities/initial.hpp" // for initial_abilities
+#include "enum.h"                // for BETTER_ENUM
 
 namespace dungeon {
 namespace race {

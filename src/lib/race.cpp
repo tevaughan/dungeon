@@ -17,7 +17,7 @@ namespace dungeon {
 namespace race {
 
 /// Allow easy setting of abilities.
-class ab: public abilities::basic {
+class ab : public abilities::basic {
 public:
   ab(ar a) { a_ = a; } ///< Copy abilities from array.
   ab() = default;      ///< Allow default construction.
@@ -91,7 +91,7 @@ abilities::basic modify(abilities::initial i, species sp, sex sx) {
   ab const &tmods = mods(sp);
   ab const &tmins = mins(sp, sx);
   ab const &tmaxs = maxs(sp, sx);
-  ab        r; // Return value.
+  ab r; // Return value.
   for (auto aid : abilities::id::_values()) {
     r.set(aid, i[aid] + tmods[aid]);
     if (r[aid] < tmins[aid]) {

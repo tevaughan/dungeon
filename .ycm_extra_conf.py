@@ -93,6 +93,8 @@ def Settings( **kwargs ):
     }
   return {}
 
+def FlagsForFile( filename ):
+  return {'flags': flags}
 
 def GetStandardLibraryIndexInSysPath( sys_path ):
   for path in sys_path:

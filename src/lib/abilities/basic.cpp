@@ -1,4 +1,4 @@
-/// @file       basic-abilities.cpp
+/// @file       abilities/basic.cpp
 /// @author     Thomas E. Vaughan
 /// @brief      Implementation of dungeon::abilities::basic.
 /// @copyright  2019 Thomas E. Vaughan
@@ -10,27 +10,6 @@
 
 namespace dungeon {
 namespace abilities {
-
-// Query strength-table.
-st_features const &basic::st() const {
-  static table<st_features> const t{
-      {/***/ 3000, st_features{-3, -1, /**/ -350, 1, 1, /***/ 0}},
-      {/***/ 5000, st_features{-2, -1, /**/ -250, 1, 1, /***/ 0}},
-      {/***/ 7000, st_features{-1, +0, /**/ -150, 1, 1, /***/ 0}},
-      {/***/ 9000, st_features{+0, +0, /*****/ 0, 2, 1, /***/ 1}},
-      {/**/ 11000, st_features{+0, +0, /*****/ 0, 2, 1, /***/ 2}},
-      {/**/ 13000, st_features{+0, +0, /***/ 100, 2, 1, /***/ 4}},
-      {/**/ 15000, st_features{+0, +0, /***/ 200, 2, 1, /***/ 7}},
-      {/**/ 16000, st_features{+0, +1, /***/ 350, 3, 1, /**/ 10}},
-      {/**/ 17000, st_features{+1, +1, /***/ 500, 3, 1, /**/ 13}},
-      {/**/ 18000, st_features{+1, +2, /***/ 750, 3, 1, /**/ 16}},
-      {/**/ 18050, st_features{+1, +3, /**/ 1000, 3, 1, /**/ 20}},
-      {/**/ 18075, st_features{+2, +3, /**/ 1250, 4, 1, /**/ 25}},
-      {/**/ 18090, st_features{+2, +4, /**/ 1500, 4, 1, /**/ 30}},
-      {/**/ 18099, st_features{+2, +5, /**/ 2000, 4, 1, /**/ 35}},
-      {/**/ 18100, st_features{+3, +6, /**/ 3000, 5, 2, /**/ 40}}};
-  return t[get(id::ST) * 1000 + get(id::ES)];
-}
 
 // Query intelligence-table.
 in_features const &basic::in() const {

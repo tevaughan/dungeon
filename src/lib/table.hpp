@@ -4,6 +4,9 @@
 /// @copyright  2019 Thomas E. Vaughan
 /// @license    GPL3; see 'LICENSE' file.
 
+#ifndef DUNGEON_TABLE_HPP
+#define DUNGEON_TABLE_HPP
+
 #include <map> // for map
 
 namespace dungeon {
@@ -33,3 +36,5 @@ template <typename R> struct table: protected std::map<int, R> {
 };
 
 } // namespace dungeon
+
+#endif // ndef DUNGEON_TABLE_HPP

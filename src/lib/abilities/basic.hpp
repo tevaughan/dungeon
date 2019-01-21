@@ -1,10 +1,9 @@
-/// @file       basic-abilities.hpp
+/// @file       abilities/basic.hpp
 /// @author     Thomas E. Vaughan
 ///
 /// @brief      Definition of
 ///             dungeon::abilities::word_size,
 ///             dungeon::abilities::id,
-///             dungeon::abilities::st_features,
 ///             dungeon::abilities::in_features,
 ///             dungeon::abilities::ws_features,
 ///             dungeon::abilities::dx_features,
@@ -22,6 +21,7 @@
 #include "enum.h"  // for BETTER_ENUM
 #include <array>   // for array
 #include <cstdint> // for int8_t
+#include "streng-tab.hpp"
 
 namespace dungeon {
 namespace abilities {
@@ -42,16 +42,6 @@ inline unsigned constexpr word_size(unsigned m) {
 /// whenever strength be below 18 or, even if 18, whenever the character is not
 /// a fighter.
 BETTER_ENUM(id, unsigned, ST = 0, IN, WS, DX, CN, CH, ES);
-
-/// Features pertaining to strength-ability.
-struct st_features {
-  int hit_adj;    ///< Adjustment to hit-throw.
-  int damage_adj; ///< Adjustment to damage.
-  int weight_adj; ///< Adjustment to weight allowance.
-  int open_doors; ///< Chances out of six for opening locked door.
-  int od_throws;  ///< Number for throws for opening locked door.
-  int bblg;       ///< Percentage for bending bars and lifting gates.
-};
 
 /// Features pertaining to intelligence-ability.
 struct in_features {
@@ -120,7 +110,8 @@ public:
   /// @param i  Identifier of ability to copy.
   int operator[](id i) const { return get(i); }
 
-  st_features const &st() const; ///< Features pertaining to strength-ability.
+  /// Features pertaining to strength-ability.
+  streng_rec const &st() const { return streng_tab()[get(id::ST)*1000+get(id::ES)];}
   in_features const &in() const; ///< Features pertaining to intel.-ability.
   ws_features const &ws() const; ///< Features pertaining to wisdom-ability.
   dx_features const &dx() const; ///< Features pertaining to dexterity-ability.
