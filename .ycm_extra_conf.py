@@ -45,11 +45,11 @@ def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
 
 # This seems to be the entry point for older YCM; this function is called by
 # ycmd to produce flags for a file.
-#def FlagsForFile( filename, **kwargs ):
-#  final_flags = MakeRelativePathsInFlagsAbsolute(flags, DIR_OF_THIS_SCRIPT)
-#  return {
-#    'flags': final_flags,
-#  }
+def FlagsForFile( filename, **kwargs ):
+  final_flags = MakeRelativePathsInFlagsAbsolute(flags, DIR_OF_THIS_SCRIPT)
+  return {
+    'flags': final_flags,
+  }
 
 
 # Second are functions that seem necessary for newer YCM.
