@@ -1,10 +1,5 @@
 import os
 
-DIR_OF_THIS_SCRIPT = os.path.abspath( os.path.dirname( __file__ ) )
-
-# These are the compilation flags that will be used in case there's no
-# compilation database set (by default, one is not set).
-# CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
 '-Wall',
 '-Wextra',
@@ -15,6 +10,8 @@ flags = [
 '-isystem', '/usr/include/clang/6/include',
 '-I', 'src/lib',
 ]
+
+DIR_OF_THIS_SCRIPT = os.path.abspath( os.path.dirname( __file__ ) )
 
 
 # First are functions that seem necessary for older YCM.
@@ -58,7 +55,7 @@ def IsHeaderFile( filename ):
   extension = os.path.splitext( filename )[ 1 ]
   return extension in [ '.h', '.hxx', '.hpp', '.hh' ]
 
-SOURCE_EXTENSIONS  = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
+SOURCE_EXTENSIONS  = [ '.cpp', '.cxx', '.cc', '.c' ]
 
 def FindCorrespondingSourceFile( filename ):
   if IsHeaderFile( filename ):
